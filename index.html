@@ -13,15 +13,15 @@
 	<div class="reveal">
 		<div class="slides">
 			<section>
-				<h1>WSL</h1>
+				<h1>WSL 2</h1>
 				<p>Pedro Lucas Kawano</p>
 				<p>Henrique Ângelo Vieira Fonseca</p>
-				<p>Milton</p>
+				<p>Milton Martins Fidelis</p>
 			</section>
 
 			<section>
 				<section>
-					<h2>O que é o WSL?</h2>
+					<h2>O que é o WSL 2?</h2>
 				</section>
 				<section>
 					<p>Windows Subsystem for Linux (WSL)</p>
@@ -29,18 +29,18 @@
 			</section>
 
 			<section>
-				<h2>Como funciona o WSL</h2>
+				<h2>Como funciona o WSL 2</h2>
 			</section>
 
 			<section>
 				<section data-auto-animate>
-					<h2 data-id="box">Como instalar o WSL?</h2>
+					<h2 data-id="box">Como instalar o WSL 2?</h2>
 					<pre data-id="code-animation" class="bash"><code data-trim data-noescape data-line-numbers="1">
 wsl --install
 					</code></pre>
 				</section>
 				<section data-auto-animate>
-					<h2 data-id="box">Como instalar o WSL?</h2>
+					<h2 data-id="box">Como instalar o WSL 2?</h2>
 					<p>Escolher uma distro</p>
 					<pre data-id="code-animation" class="bash"><code data-trim data-noescape data-line-numbers="3|5-17|19-22">
 wsl --install
@@ -97,8 +97,45 @@ NAME      STATE           VERSION
 				</section>
 			</section>
 			<section>
-				<h2>Configurando Apache2</h2>
+				<section data-auto-animate>
+					<h2>Configurando o nodejs</h2>
+				</section>
+				<section data-auto-animate>
+					<h2 data-id="box">baixando o nodejs</h2>
+					<pre data-id="code-animation" class="bash"><code data-trim data-noescape data-line-numbers="1-2|4">
+curl -o- https://raw.githubusercontent.com/nvm-sh
+/nvm/v0.35.3/install.sh | bash
+
+reinicie o terminal
+					</code></pre>
+				</section>
+				<section data-auto-animate>
+					<pre data-id="code-animation" class="bash"><code data-trim data-noescape data-line-numbers="1|3">
+nvm install 17.3.1
+
+npm install express --save
+					</code></pre>
+				</section>
+				<section data-auto-animate>
+					<h3>Configurando o nodejs</h3>
+					<p>Código para o servidor</p>
+					<pre data-id="code-animation" class="javascript"><code data-trim data-noescape data-line-numbers="|1-5|7-9|11">
+						const express = require('express');
+						const path = require('path');
+						
+						const app = express();
+						const port = process.env.PORT || 8080;
+						
+						app.get('/', function(req, res) {
+						  res.sendFile(path.join(__dirname, '/index.html'));
+						});
+						
+						app.listen(port);
+						console.log('Servidor iniado em http://localhost:' + port);
+					</code></pre>
+				</section>
 			</section>
+
 			<section>
 				<h2>Testando</h2>
 			</section>
